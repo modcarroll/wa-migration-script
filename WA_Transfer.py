@@ -4,6 +4,8 @@
 # Link: https://github.com/modlanglais/wa-migration-script
 ###########################################################
 
+## NOTE: Does NOT delete old skills
+
 import json
 import ibm_watson
 from ibm_watson import ApiException
@@ -15,7 +17,7 @@ wa_credentials = ''
 ############################
 
 ####### Watson Assistant creds #######
-wa_source_credentials = [{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api'},{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api'},{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://api.us-south.assistant.watson.cloud.ibm.com/instances/123myinstanceid'}]
+wa_source_credentials = [{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://api.us-south.assistant.watson.cloud.ibm.com/instances/123myinstanceid'},{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api'},{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api'}]
 
 wa_target_credentials = {'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://api.us-south.assistant.watson.cloud.ibm.com/instances/123myinstanceid'}
 #################################################

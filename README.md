@@ -8,6 +8,10 @@ This is a script to migrate skills from 3 instances of Watson Assistant to 1 ins
 
 2. Once you have updated the credentials, run the script: `python3 WA_Transfer.py`
 
+## delete.py
+
+**DANGER** This script WILL delete every skill in your instance of Watson Assistant. ONLY use once you have confirmed that your skills have been properly backed up/migrated.
+
 ### Note
 
 This script will NOT migrate logs as Watson Assistant does not currently support importing logs.
