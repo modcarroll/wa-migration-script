@@ -17,9 +17,13 @@ wa_credentials = ''
 ############################
 
 ####### Watson Assistant creds #######
-wa_source_credentials = [{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://api.us-south.assistant.watson.cloud.ibm.com/instances/123myinstanceid'},{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api'},{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api'}]
+wa_source_credentials = [
+{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api', 'version': '-dev'}, # dev instance
+{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api', 'version': '-test'}, # test instance
+{'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api', 'version': '-prod'} # prod instance
+]
 
-wa_target_credentials = {'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://api.us-south.assistant.watson.cloud.ibm.com/instances/123myinstanceid'}
+wa_target_credentials = {'wa_version':'2020-04-01', 'wa_apikey':'123apikey', 'wa_url':'https://gateway.watsonplatform.net/assistant/api'}
 #################################################
 
 ############################################
@@ -41,6 +45,7 @@ if wa_source_credentials != '':
         wa_version = creds['wa_version']
         wa_apikey = creds['wa_apikey']
         wa_url = creds['wa_url']
+        version = creds['version']
 
         if(wa_version == '' or wa_apikey == '' or wa_url == ''):
             print("No or invalid Watson Assistant credentials detected. Skipping.")
@@ -73,7 +78,7 @@ if wa_source_credentials != '':
                     ).get_result()
 
                     response = assistant_target.create_workspace(
-                        name=workspace_response['name'],
+                        name=workspace_response['name'] + version,
                         description=workspace_response['description']
                     ).get_result()
 
@@ -81,10 +86,10 @@ if wa_source_credentials != '':
                     print(response)
                     print("")
 
-                    print(space['name'] + " migrated ✅")
+                    print(space['name'] + version + " migrated ✅")
                     print("")
                 except (ApiException, Exception) as ex:
-                    print(space['name'] + " migration failed. " + str(ex.code) + ": " + ex.message)
+                    print(space['name'] + " migration failed. " + ex.message)
 
     print("")
     print("Migration complete.")
