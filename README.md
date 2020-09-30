@@ -1,6 +1,6 @@
 # Watson Assistant Migration Tool
 
-This is a script to migrate skills from 3 instances of Watson Assistant to 1 instance of Watson Assistant.
+This is a script to migrate skills from 3 instances (assuming dev, test, prod) of Watson Assistant to 1 instance of Watson Assistant.
 
 ## Directions
 
